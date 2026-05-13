@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Approver Dashboard - TaTu{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Pending Approvals - {{ unit.name }}</h2>
+
+    {% if pending_steps %}
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Programme</th>
+                <th>Applied Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for step in pending_steps %}
+            <tr>
+                <td>{{ step.request.student.student_profile.student_id }}</td>
+                <td>{{ step.request.student.get_full_name|default:step.request.student.username }}</td>
+                <td>{{ step.request.student.student_profile.programme }}</td>
+                <td>{{ step.request.applied_date|date:"d M Y" }}</td>
+                <td>
+                    <a href="{% url 'approve_step' step.id %}" class="btn btn-primary btn-sm">
+                        Review & Approve
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-success text-center p-5">
+            <h4>No pending requests for your unit.</h4>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

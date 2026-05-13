@@ -1,0 +1,6 @@
+<p>Dear Student,</p>
+<p>Your clearance request for <strong>{{ step.unit.name }}</strong> has been <strong>{{ step.status|title }}</strong>.</p>
+{% if step.comment %}
+<p>Comment from approver: {{ step.comment }}</p>
+{% endif %}
+<p>Thank you,<br>TaTu Online Clearance System</p>

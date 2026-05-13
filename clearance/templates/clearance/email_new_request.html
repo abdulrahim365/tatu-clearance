@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .header { background-color: #006400; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .button { background-color: #FF8C00; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Tamale Technical University (TaTu)</h2>
+        <h3>New Clearance Request Received</h3>
+    </div>
+    <div class="content">
+        <p>Dear <strong>{{ student.get_full_name|default:student.username }}</strong>,</p>
+        <p>Your clearance request has been successfully submitted.</p>
+        <p><strong>Request ID:</strong> #{{ request.id }}</p>
+        <p><strong>Reason:</strong> {{ request.reason|truncatewords:30 }}</p>
+        <p>You will be notified as each unit processes your request.</p>
+        
+        <p style="margin-top: 25px;">
+            <a href="http://127.0.0.1:8000" class="button">Track My Progress</a>
+        </p>
+        
+        <p>Best regards,<br><strong>TaTu Clearance Team</strong></p>
+    </div>
+</body>
+</html>

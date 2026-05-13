@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
+
+{% block title %}Create Account - TaTu Clearance{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg border-0">
+                <!-- Header -->
+                <div class="card-header text-center py-4" style="background-color: #006400; color: white;">
+                    <h2 class="mb-1">
+                        <i class="fas fa-graduation-cap"></i> TaTu Clearance
+                    </h2>
+                    <p class="mb-0">Create New Student Account</p>
+                </div>
+
+                <div class="card-body p-5">
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+
+                        {{ form|crispy }}
+
+                        <button type="submit" class="btn btn-tatu btn-lg w-100 mt-4 py-3">
+                            <i class="fas fa-user-plus"></i> Create My Account
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="mb-0">
+                            Already have an account? 
+                            <a href="{% url 'account_login' %}" class="text-success fw-bold">
+                                Login Here
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-footer text-center py-3 bg-light">
+                    <small class="text-muted">
+                        Tamale Technical University (TaTu) © 2026
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

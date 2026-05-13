@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #006400; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .button { background-color: #FF8C00; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Tamale Technical University (TaTu)</h2>
+            <h3>Clearance Update</h3>
+        </div>
+        <div class="content">
+            <p>Dear <strong>{{ student.get_full_name|default:student.username }}</strong>,</p>
+            
+            <p>Your clearance request has been updated:</p>
+            
+            <p><strong>Unit:</strong> {{ step.unit.name }}</p>
+            <p><strong>Status:</strong> 
+                <span style="color: {% if step.status == 'approved' %}green{% else %}red{% endif %}">
+                    <strong>{{ step.status|title }}</strong>
+                </span>
+            </p>
+            
+            {% if step.comment %}
+            <p><strong>Comment from Approver:</strong> {{ step.comment }}</p>
+            {% endif %}
+
+            <p>Current Progress: <strong>{{ completed }} out of 8 steps approved</strong></p>
+
+            <p style="margin-top: 30px;">
+                <a href="http://127.0.0.1:8000" class="button">View My Clearance Status</a>
+            </p>
+
+            <p>Best regards,<br><strong>TaTu Clearance Team</strong></p>
+        </div>
+    </div>
+</body>
+</html>

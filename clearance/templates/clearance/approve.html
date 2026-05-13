@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Review Request - TaTu{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success">
+                    Review Clearance for {{ step.request.student.student_profile.student_id }}
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Comment (optional)</label>
+                            <textarea name="comment" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" name="action" value="reject" class="btn btn-danger">
+                                Reject
+                            </button>
+                            <button type="submit" name="action" value="approve" class="btn btn-success">
+                                Approve
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+{% load django_bootstrap5 %}   <!-- Corrected load tag -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TaTu Online Clearance System{% endblock %}</title>
+    
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        .navbar { background-color: #006400 !important; }
+        .btn-tatu { 
+            background-color: #FF8C00; 
+            color: white; 
+        }
+        .btn-tatu:hover { background-color: #e67e00; }
+        .card-header { background-color: #006400; color: white; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="{% url 'dashboard' %}">
+                <i class="fas fa-graduation-cap"></i> TaTu Clearance System
+            </a>
+            <div class="ms-auto">
+                <span class="navbar-text me-3 text-light">
+                    Welcome, <strong>{{ user.username }}</strong>
+                </span>
+                <a class="btn btn-outline-light btn-sm" href="{% url 'account_logout' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
