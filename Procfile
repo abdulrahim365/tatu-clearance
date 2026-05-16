@@ -1,0 +1,1 @@
+web: gunicorn tatuclearance.wsgi --log-file -
