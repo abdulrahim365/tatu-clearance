@@ -1,1 +1,1 @@
-web: gunicorn tatuclearance.wsgi --log-file -
+echo "web: gunicorn tatuclearance.wsgi --log-file -"
