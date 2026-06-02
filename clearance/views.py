@@ -7,9 +7,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.http import HttpResponse
-from matplotlib.pyplot import step
 from weasyprint import HTML
-
 from .models import ClearanceRequest, ClearanceStep, Unit
 from .forms import ClearanceApplicationForm
 from accounts.models import StudentProfile, ApproverProfile

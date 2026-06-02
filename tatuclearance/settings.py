@@ -187,6 +187,19 @@ EMAIL_HOST_PASSWORD = 'laajomsrlsmfowcv'           # ← Paste the 16-character 
 
 DEFAULT_FROM_EMAIL = 'TaTu Clearance <abdulrahimdra@gmail.com>'
 
+# django-allauth Settings
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+
+# Fix for deprecation warnings
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
+ACCOUNT_LOGIN_REDIRECT_URL = 'dashboard'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -273,3 +286,9 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']   # For Render
 
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+
+DEBUG = True   # Change to False after testing
+ALLOWED_HOSTS = ['*']
+
+# Add at the bottom
+CSRF_TRUSTED_ORIGINS = ['https://*.pythonanywhere.com']

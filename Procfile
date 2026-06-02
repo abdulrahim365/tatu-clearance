@@ -1,1 +1,1 @@
-echo "web: gunicorn tatuclearance.wsgi --log-file -" > Procfile
+web: gunicorn tatuclearance.wsgi --log-file -
